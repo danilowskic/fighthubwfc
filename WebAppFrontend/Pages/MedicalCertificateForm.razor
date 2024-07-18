@@ -1,0 +1,70 @@
+﻿@page "/reviewForm/{FighterId:int}/{FighterInvolvementId:int}/{EventId:int}"
+@using WebAppBackend.DTOs
+@using FightHubWFC.Service
+@inject HttpClient Http
+@layout MainLayout
+@inject NavigationManager NavigationManager
+@inject MedicalCertificateDTOStateService MedicalCertificateDtoState
+
+<h1>Wystawianie opinii</h1>
+
+<EditForm Model="medicalCertificateDto" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <label for="weight">Waga [kg]:</label>
+        <InputNumber id="weight" @bind-Value="medicalCertificateDto.Weight" class="form-control" />
+        <ValidationMessage For="@(() => medicalCertificateDto.Weight)" />
+    </div>
+
+    <div class="form-group">
+        <label for="height">Wzrost [cm]:</label>
+        <InputNumber id="height" @bind-Value="medicalCertificateDto.Height" class="form-control" />
+        <ValidationMessage For="@(() => medicalCertificateDto.Height)" />
+    </div>
+
+    <div class="form-group">
+        <label for="description">Opis:</label>
+        <InputTextArea id="description" @bind-Value="medicalCertificateDto.Description" class="form-control" maxlength="1024" style="height:100px; overflow-y:scroll;" />
+        <p>@medicalCertificateDto.Description.Length/1024</p>
+    </div>
+
+    <div class="form-group">
+        <label>Udziel zgody:</label>
+        <div>
+            <InputRadioGroup @bind-Value="medicalCertificateDto.IsAccepted">
+                <InputRadio Value="true" /> TAK
+                <InputRadio Value="false" /> NIE
+            </InputRadioGroup>
+        </div>
+    </div>
+
+    <button type="submit" class="confirm-button">ZATWIERDŹ</button>
+</EditForm>
+@code {
+    [Parameter] public int FighterId { get; set; }
+    [Parameter] public int FighterInvolvementId { get; set; }
+    [Parameter] public int EventId { get; set; }
+    
+    private MedicalCertificateDTO medicalCertificateDto = new MedicalCertificateDTO();
+
+    private async Task HandleValidSubmit()
+    {
+        medicalCertificateDto.FighterId = FighterId;
+        medicalCertificateDto.FighterInvolvementId = FighterInvolvementId;
+        medicalCertificateDto.EventId = EventId;
+        
+        var response = await Http.PostAsJsonAsync("MedicalCertificate/createMedicalCertificate", medicalCertificateDto);
+        if (response.IsSuccessStatusCode)
+        {
+            MedicalCertificateDtoState.CurrentMedicalCertificateDTO = medicalCertificateDto;
+            Console.WriteLine("Medical Certificate has been successfully created.");
+            NavigationManager.NavigateTo($"/medicalReviewDetails");
+        }
+        else
+        {
+            var errorResponse = await response.Content.ReadAsStringAsync();
+            Console.WriteLine($"Error saving certificate! Response status code: {response.StatusCode}. Details: {errorResponse}");
+        }
+    }
+}

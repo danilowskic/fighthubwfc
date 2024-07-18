@@ -1,0 +1,14 @@
+﻿@page "/medicalReviewDetails"
+@using FightHubWFC.Service
+@inject HttpClient Http
+@layout MainLayout
+@inject MedicalCertificateDTOStateService MedicalCertificateDtoState
+
+<h1>Opinia Lekarska</h1>
+
+<div class="medical-review-details">
+    <p>Status: @(MedicalCertificateDtoState.CurrentMedicalCertificateDTO.IsAccepted ? "ZAAKCEPTOWANY" : "ODRZUCONY")</p>
+    <br/>
+    <p>Opis:</p>
+    <p>@MedicalCertificateDtoState.CurrentMedicalCertificateDTO.Description</p>
+</div>

@@ -1,0 +1,86 @@
+﻿@inherits LayoutComponentBase
+<div class="page">
+    <header>
+        <div class="header-content">
+            <a href="/"><img src="images/logo.png" alt="logo" /></a>
+            <ul id="ul-menu-options">
+                <li><a href="fighters">Zawodnicy</a></li>|
+                <li><a href="opinie">Wystawione Opinie</a></li>
+            </ul>
+            <img id="img-avatar" src="images/avatar.png" alt="avatar" />
+        </div>
+    </header>
+    
+    <main>
+        @Body
+    </main>
+</div>
+
+<footer>FightHub &copy; 2024</footer>
+
+<style>
+    .page {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    header {
+        background-color: white;
+        padding: 10px 20px;
+    }
+
+    .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    header img {
+        height: 100px;
+        width: auto;
+    }
+
+    #ul-menu-options {
+        list-style: none;
+        padding: 0;
+        margin: 0 20px 0 50px; /* Usunięcie marginesu po prawej stronie menu */
+        display: flex;
+        align-items: center;
+    }
+
+    #ul-menu-options li {
+        margin: 0 10px;
+    }
+
+    #ul-menu-options li a {
+        text-decoration: none;
+        color: #333; /* Kolor tekstu linków, można zmienić */
+        font-weight: bold;
+    }
+
+    #img-avatar {
+        height: 80px; /* Dostosuj wysokość awatara */
+        width: auto;
+        margin-left: auto; /* Automatyczne wyrównanie do prawej strony */
+    }
+
+    main {
+        flex: 1;
+        padding: 20px; /* Padding dla głównej zawartości */
+    }
+
+    footer {
+        position: absolute;  /* Pozycjonowanie bezwzględne względem najbliższego przodka, który jest pozycjonowany względnie */
+        bottom: 0;  /* Przyczepienie stopki do dolnej krawędzi kontenera */
+        width: 100%;
+        height: 5%;
+        text-align: center;
+        font-weight: bold;
+        padding: 10px 0;
+        background-color: black;
+        color: white;
+    }
+</style>

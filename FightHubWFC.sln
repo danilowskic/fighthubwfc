@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppFrontend", "WebAppFrontend\WebAppFrontend.csproj", "{C61432A6-200C-401E-A542-3716A8534BAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppBackend", "WebAppBackend\WebAppBackend.csproj", "{9F209FED-DAD7-4DC5-937A-5DD9D4A6871E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C61432A6-200C-401E-A542-3716A8534BAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C61432A6-200C-401E-A542-3716A8534BAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C61432A6-200C-401E-A542-3716A8534BAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C61432A6-200C-401E-A542-3716A8534BAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F209FED-DAD7-4DC5-937A-5DD9D4A6871E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F209FED-DAD7-4DC5-937A-5DD9D4A6871E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F209FED-DAD7-4DC5-937A-5DD9D4A6871E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F209FED-DAD7-4DC5-937A-5DD9D4A6871E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

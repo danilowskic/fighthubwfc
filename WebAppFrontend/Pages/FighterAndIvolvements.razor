@@ -1,0 +1,85 @@
+﻿@page "/fighters"
+@using WebAppBackend.DTOs
+@using FightHubWFC.Service
+@inject HttpClient Http
+@layout MainLayout
+@inject NavigationManager NavigationManager
+@inject FighterStateService FighterState
+@inject FighterInvolvementStateService FighterInvolvementState
+
+<h1>Zawodnicy i ich zapisy</h1>
+
+<div class="fighters-container">
+    <div class="fighters-list">
+        <button class="@(selectedFighterId == 0 ? "button-active" : "button-normal")"
+                @onclick="() => SelectFighter(0)">
+            ---
+        </button>
+        @foreach (var fighter in fighters)
+        {
+            <button class="@(selectedFighterId == fighter.Id ? "button-active" : "button-normal")"
+                    @onclick="() => SelectFighter(fighter.Id)">
+                @string.Join(", ", fighter.Names) @fighter.Surname
+            </button>
+        }
+    </div>
+    <div class="involvements-list">
+        @if (involvements.Any())
+        {
+            @foreach (var involvement in involvements)
+            {
+                <button class="button-normal" @onclick="() => NavigateToInvolvementDetails(involvement.Id)">
+                    @involvement.NumberID
+                </button>
+            }
+        }
+    </div>
+</div>
+
+@code {
+    private List<FighterDTO> fighters = new();
+    private List<FighterInvolvementDTO> involvements = new();
+    private int selectedFighterId = 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+        fighters = await Http.GetFromJsonAsync<List<FighterDTO>>("fighters");
+        if (fighters == null)
+        {
+            fighters = new List<FighterDTO>();
+        }
+    }
+
+    private async Task SelectFighter(int fighterId)
+    {
+        selectedFighterId = fighterId;
+        if (fighterId != 0)
+        {
+            try
+            {
+                involvements = await Http.GetFromJsonAsync<List<FighterInvolvementDTO>>($"fighter/{fighterId}/involvements");
+            } 
+            catch (HttpRequestException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                involvements = new List<FighterInvolvementDTO>(); 
+            }
+            
+            FighterState.CurrentFighter = fighters.Find(f => f.Id == fighterId);
+                
+            if (involvements == null || !involvements.Any())
+            {
+                involvements = new List<FighterInvolvementDTO>();
+            }
+        }
+        else
+        {
+            involvements = new List<FighterInvolvementDTO>();
+        }
+    }
+
+    private void NavigateToInvolvementDetails(int involvementId)
+    {
+        FighterInvolvementState.CurrentFighterInvolvement = involvements.Find(i => i.Id == involvementId);
+        NavigationManager.NavigateTo($"/involvementDetails");
+    }
+}

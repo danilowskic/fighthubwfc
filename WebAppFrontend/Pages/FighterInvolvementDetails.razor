@@ -1,0 +1,69 @@
+﻿@page "/involvementDetails"
+@using WebAppBackend.DTOs
+@layout MainLayout
+@using FightHubWFC.Service
+@inject FighterStateService FighterState
+@inject FighterInvolvementStateService FighterInvolvementState
+
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+@if (FighterState != null && FighterInvolvementState != null && eventDetails != null)
+{
+    <h1>Zapis @FighterInvolvementState.CurrentFighterInvolvement.NumberID</h1>
+    
+    <div class="details-container">
+        <div class="left-pane">
+            <p>Data i czas zapisu: @FighterInvolvementState.CurrentFighterInvolvement.RegistrationDateTime.ToString("dd MMMM yyyy, HH:mm")</p>
+            <p>Status: OCZEKUJĄCY</p>
+            
+            <br/>
+            
+            <p>Nazwa wydarzenia: @eventDetails.Name</p>
+            <p>Lokalizacja: @eventDetails.Street @eventDetails.BuildingNumber @eventDetails.ApartmentNumber @eventDetails.City</p>
+            <p>Data wydarzenia: @eventDetails.DateTime</p>
+        </div>
+        
+        <div class="right-pane">    
+            <p>Imię i nazwisko: @string.Join(" ", FighterState.CurrentFighter.Names) @FighterState.CurrentFighter.Surname</p>
+            <p>Płeć: @(FighterState.CurrentFighter.Gender == "MALE" ? "M" : "K")</p>
+            <p>Waga [kg]: @FighterState.CurrentFighter.Weight</p>
+            <p>Wzrost [cm]: @FighterState.CurrentFighter.Height</p>
+            <p>Waga: @FighterState.CurrentFighter.WeightScale</p>
+        </div>
+    </div>
+    
+    <button class="confirm-button" @onclick="NavigateToMedicalCertificateForm">WYSTAW OPINIĘ</button>
+}
+else
+{
+    <p>Szczegóły zapisu nie są dostępne.</p>
+}
+
+@code {
+    protected EventDTO eventDetails;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await FetchEventDetails();
+    }
+
+    private async Task FetchEventDetails()
+    {
+        var eventId = FighterInvolvementState.CurrentFighterInvolvement.EventId;
+        try
+        {
+            eventDetails = await Http.GetFromJsonAsync<EventDTO>($"event/{eventId}");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+    }
+    
+    private void NavigateToMedicalCertificateForm()
+    {
+        var url = $"/reviewForm/{FighterState.CurrentFighter.Id}/{FighterInvolvementState.CurrentFighterInvolvement.Id}/{FighterInvolvementState.CurrentFighterInvolvement.EventId}";
+        NavigationManager.NavigateTo(url);
+    }
+}
