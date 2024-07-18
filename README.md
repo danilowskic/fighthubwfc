@@ -1,37 +1,40 @@
-#FightHub WFC 
-
-##System zarządzania walkami i szkoleniami organizowanymi przez World Federation of Combat (WFC) 
+# FightHub WFC 
+## System zarządzania walkami i szkoleniami organizowanymi przez World Federation of Combat (WFC) 
 
 *Daniłowski Cezary, s25901 16 czerwca 2024, Warszawa* 
-
 *Polsko-Japońska Akademia Technik Komputerowych Modelowanie i Analiza Systemów Informacyjnych* 
 
-###Spis treści
+
+
+### Spis treści
 
 1. [Kontekst i wymagania użytkownika ........................................................................................................ 3](#_page2_x68.00_y91.92)
-1. [Diagram przypadków użycia ................................................................................................................... 5](#_page4_x104.00_y93.92)
-1. [Diagram klas ............................................................................................................................................ 6](#_page5_x68.00_y70.92)
-1. [Analityczny ......................................................................................................................................... 6](#_page5_x68.00_y116.92)
-1. [Projektowy ......................................................................................................................................... 7](#_page6_x68.00_y70.92)
+2. [Diagram przypadków użycia ................................................................................................................... 5](#_page4_x104.00_y93.92)
+3. [Diagram klas ............................................................................................................................................ 6](#_page5_x68.00_y70.92)
+    3.1. [Analityczny ......................................................................................................................................... 6](#_page5_x68.00_y116.92)
+    3.2. [Projektowy ......................................................................................................................................... 7](#_page6_x68.00_y70.92)
 4. [Scenariusz przypadku użycia „Wystawienie opinii lekarskiej” ................................................................ 8](#_page7_x68.00_y70.92)
-1. [Opis tekstowy ................................................................................................................................. 8](#_page7_x68.00_y138.92)
-1. [Diagram aktywności ....................................................................................................................... 9](#_page8_x68.00_y70.92)
+    4.1. [Opis tekstowy ................................................................................................................................. 8](#_page7_x68.00_y138.92)
+    4.2. [Diagram aktywności ....................................................................................................................... 9](#_page8_x68.00_y70.92)
 5. [Diagram stanu dla klasy „FighterInvolvement” .................................................................................... 10](#_page9_x68.00_y70.92)
 6. [Skutki analizy dynamicznej ................................................................................................................... 11](#_page10_x68.00_y70.92)
-1. [Metody ............................................................................................................................................ 11](#_page10_x68.00_y150.92)
-1. [Atrybuty ........................................................................................................................................... 11](#_page10_x68.00_y386.92)
+    6.1. [Metody ............................................................................................................................................ 11](#_page10_x68.00_y150.92)
+    6.2. [Atrybuty ........................................................................................................................................... 11](#_page10_x68.00_y386.92)
 7. [Projekt graficznego interfejsu użytkownika .......................................................................................... 12](#_page11_x68.00_y91.92)
 8. [Decyzje projektowe............................................................................................................................... 14](#_page13_x68.00_y70.92)
-1. [ADR 1 – Ekstensja i jej trwałość ........................................................................................................... 14](#_page13_x68.00_y116.92)
-1. [ADR 2 – Asocjacja z atrybutem ............................................................................................................ 14](#_page13_x68.00_y301.92)
-1. [ADR 3 – Dziedziczenie overlapping ..................................................................................................... 15](#_page14_x68.00_y405.92)
-1. [ADR 4 – Dziedziczenie wieloaspektowe .............................................................................................. 17](#_page16_x68.00_y70.92)
-5. [ADR 5 – Atrybut powtarzalny .............................................................................................................. 18](#_page17_x68.00_y111.92)
-5. [ADR 6 – Mapowanie atrybutów złożonych w modelu relacyjnym ...................................................... 18](#_page17_x68.00_y673.92)
-5. [ADR 7 – Mapowanie dziedziczenia w modelu relacyjnym .................................................................. 19](#_page18_x68.00_y250.92)
-5. [ADR 8 – Wykorzystane technologie .................................................................................................... 19](#_page18_x68.00_y462.92)
-5. [Inne pomniejsze decyzje ..................................................................................................................... 19](#_page18_x68.00_y647.92)
-1. Kontekst<a name="_page2_x68.00_y91.92"></a> i wymagania użytkownika ![ref1]
+    8.1. [ADR 1 – Ekstensja i jej trwałość ........................................................................................................... 14](#_page13_x68.00_y116.92)
+    8.2. [ADR 2 – Asocjacja z atrybutem ............................................................................................................ 14](#_page13_x68.00_y301.92)
+    8.3. [ADR 3 – Dziedziczenie overlapping ..................................................................................................... 15](#_page14_x68.00_y405.92)
+    8.4. [ADR 4 – Dziedziczenie wieloaspektowe .............................................................................................. 17](#_page16_x68.00_y70.92)
+    8.5. [ADR 5 – Atrybut powtarzalny .............................................................................................................. 18](#_page17_x68.00_y111.92)
+    8.6. [ADR 6 – Mapowanie atrybutów złożonych w modelu relacyjnym ...................................................... 18](#_page17_x68.00_y673.92)
+    8.7. [ADR 7 – Mapowanie dziedziczenia w modelu relacyjnym .................................................................. 19](#_page18_x68.00_y250.92)
+    8.8. [ADR 8 – Wykorzystane technologie .................................................................................................... 19](#_page18_x68.00_y462.92)
+    8.9. [Inne pomniejsze decyzje ..................................................................................................................... 19](#_page18_x68.00_y647.92)
+
+
+   
+### 1. Kontekst<a name="_page2_x68.00_y91.92"></a> i wymagania użytkownika
 
 Pewna organizacja znana pod nazwą World Federation of Combat, w skrócie WFC, zajmuje się organizacją wydarzeń sportowych, a także szkoleń związanych z różnymi sztukami walki. Zwróciła się z prośbą o realizację systemu wspomagającego codzienną pracę i procesy w niej zachodzące. 
 
@@ -53,12 +56,12 @@ Poza zapisem na wydarzenie zawodnicy mogą też wziąć udział w bootcampie szk
 
 System, ma też umożliwiać comiesięczne generowanie podsumowania finansowego WFC. 
 
-###2. Diagram<a name="_page4_x104.00_y93.92"></a> przypadków użycia ![](Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.003.png)![](Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.004.png)
-###3. Diagram<a name="_page5_x68.00_y70.92"></a> klas ![ref2]
-###1. Analityczny<a name="_page5_x68.00_y116.92"></a> ![](Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.006.png)
-###2. Projektowy<a name="_page6_x68.00_y70.92"></a> ![](Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.007.png)
-###4. Scenariusz<a name="_page7_x68.00_y70.92"></a> przypadku użycia „Wystawienie opinii lekarskiej” ![](Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.008.png)
-###1. Opis<a name="_page7_x68.00_y138.92"></a> tekstowy 
+### 2. Diagram<a name="_page4_x104.00_y93.92"></a> przypadków użycia ![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.003.png)
+### 3. Diagram<a name="_page5_x68.00_y70.92"></a> klas
+#### 3.1. Analityczny<a name="_page5_x68.00_y116.92"></a> ![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.006.png)
+#### 3.2. Projektowy<a name="_page6_x68.00_y70.92"></a> ![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.007.png)
+### 4. Scenariusz<a name="_page7_x68.00_y70.92"></a> przypadku użycia „Wystawienie opinii lekarskiej”
+#### 4.1. Opis<a name="_page7_x68.00_y138.92"></a> tekstowy 
 
 
 
@@ -70,16 +73,16 @@ System, ma też umożliwiać comiesięczne generowanie podsumowania finansowego 
 |**Alternatywny przepływ zdarzeń** |<p>`       `2a.  System wyświetla informację o braku jakichkolwiek zawodników,                przypadek użycia kończy się. </p><p>`       `4a.  Brak jakichkolwiek zapisów dla wybranego zawodnika, przypadek                użycia nie kończy się, system czeka na wybranie innego  </p><p>`               `zawodnika. </p><p>`       `8a.  Występują błędy walidacji, system wyświetla stosowne  </p><p>`               `komunikaty o niepoprawności danych. </p><p>`               `8aa. Aktor poprawia dane, i po kliknięciu system wraca do kroku                          8. </p><p>`               `8ab. Aktor klika przycisk „Anuluj”, system wraca do kroku 2. </p>|
 |**Warunek końcowy** |Jest zapamiętana nowa opinia lekarska i jest aktualizowany status zapisu zawodnika w wydarzeniu. |
 
-2. Diagram<a name="_page8_x68.00_y70.92"></a> aktywności 
+#### 4.2. Diagram<a name="_page8_x68.00_y70.92"></a> aktywności 
 
-![](Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.009.png)
+![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.009.png)
 
-5. Diagram<a name="_page9_x68.00_y70.92"></a> stanu dla klasy „FighterInvolvement” ![ref2]![](Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.010.png)
-6. Skutki<a name="_page10_x68.00_y70.92"></a> analizy dynamicznej ![ref2]
+### 5. Diagram<a name="_page9_x68.00_y70.92"></a> stanu dla klasy „FighterInvolvement” ![ref2]![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.010.png)
+### 6. Skutki<a name="_page10_x68.00_y70.92"></a> analizy dynamicznej ![ref2]
 
 W ramach procesu analizy dynamicznej nakreślono metody i atrybuty potrzebne do przeprowadzenia zaproponowanego przypadku użycia. 
 
-1. Metody<a name="_page10_x68.00_y150.92"></a> 
+#### 6.1. Metody<a name="_page10_x68.00_y150.92"></a> 
 
 **CreateFighterInvolvement(fighter, event)** 
 
@@ -95,38 +98,40 @@ Wywoływane wewnątrz metody CreateMedicalCertificate. Aktualizują one wagę i 
 
 Metoda wywoływana przez metodę CreateMedicalCertificate. Aktualizuje status konkretnego zapisu. 
 
-2. Atrybuty<a name="_page10_x68.00_y386.92"></a> 
+#### 6.2. Atrybuty<a name="_page10_x68.00_y386.92"></a> 
 
 **status –** atrybut w klasie FighterInvolvement biorący udział w przypadku użycia. Reprezentuje status zapisu, gdzie może przyjąć następujące wartości: PENDING, ACCEPTED, REJECTED, ARCHIVED, CANCELED 
 
 **height** – atrybut w klasie Fighter, jest wykorzystywany w przypadku użycia **weight** – tak jak height 
 
-**isAccepted** – atrybut w klasie MedicalCertificate. Lekarz ustawiając go decyduje o dopuszczeniu zawodnika do konkretnego wydarzenia 
+**isAccepted** – atrybut w klasie MedicalCertificate. Lekarz ustawiając go decyduje o dopuszczeniu zawodnika do konkretnego wydarzenia. 
 
-. 
 
-7. Projekt<a name="_page11_x68.00_y91.92"></a> graficznego interfejsu użytkownika ![ref1]
 
-R 
+### 7. Projekt<a name="_page11_x68.00_y91.92"></a> graficznego interfejsu użytkownika
 
-![](Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.011.jpeg)
+
+![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.011.jpeg)
 
 Rys. 7.1 Interfejs lekarza – lista zawodników i ich oczekujących zapisów na wydarzenia. 
 
-![](Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.012.jpeg)
+![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.012.jpeg)
 
 Rys. 7.2 Interfejs lekarza – wyświetlenie pojedynczego zapisu zawodnika. 
 
-![](Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.013.jpeg)
+![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.013.jpeg)
 
 Rys. 7.3 Interfejs lekarza – formularz wystawiania opinii lekarskiej. 
 
-![](Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.014.jpeg)
+![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.014.jpeg)
 
 Rys. 7.4 Interfejs lekarza – wyświetlenie pojedynczej opinii lekarskiej. 
 
-8. Decyzje<a name="_page13_x68.00_y70.92"></a> projektowe ![ref2]
-1. ADR<a name="_page13_x68.00_y116.92"></a> 1 – Ekstensja i jej trwałość 
+
+
+### 8. Decyzje<a name="_page13_x68.00_y70.92"></a> projektowe ![ref2]
+
+#### 8.1. ADR<a name="_page13_x68.00_y116.92"></a> 1 – Ekstensja i jej trwałość 
 
 |Kontekst |W ramach projektu wynikła potrzeba przechowywania dużej ilości powiązanych relacjami danych, do których wymagany jest szybki dostęp. W związku z tym konieczne było wybranie odpowiedniego rozwiązania. |
 | - | :- |
@@ -136,7 +141,7 @@ Rys. 7.4 Interfejs lekarza – wyświetlenie pojedynczej opinii lekarskiej.
 |Kontrargumenty przeciw wybranemu rozwiązaniu |Trudniejsze w implementacji i konfiguracji, nadmiarowość dla niektórych prostych scenariuszy przechowywania danych |
 |Decyzja zatwierdzona przez |Daniłowski Cezary |
 
-2. ADR<a name="_page13_x68.00_y301.92"></a> 2 – Asocjacja z atrybutem  
+#### 8.2. ADR<a name="_page13_x68.00_y301.92"></a> 2 – Asocjacja z atrybutem  
 
 |Kontekst |Podczas projektowania systemu zgodnie z zasadami UML napotkano konieczność zamodelowania asocjacji pomiędzy dwoma klasami, posiadającej dodatkowe atrybuty, tj. na Rys. 7.1. Konieczne było wybranie optymalnego rozwiązania |
 | - | :- |
@@ -146,15 +151,15 @@ Rys. 7.4 Interfejs lekarza – wyświetlenie pojedynczej opinii lekarskiej.
 |Kontrargumenty przeciw wybranemu rozwiązaniu |Wymóg dodatkowej klasy, potencjalnie bardziej złożone zapytania w bazie danych, drobne skomplikowanie w tworzeniu relacji zwrotnych |
 |Decyzja zatwierdzona przez |Daniłowski Cezary |
 
-![](Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.015.png)
+![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.015.png)
 
 Rys. 7.1 Fragment z analitycznego diagramu klas – przykład asocjacji z atrybutem. 
 
-![](Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.016.png)
+![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.016.png)
 
 Rys. 7.2 Fragment z projektowego diagramu klas – przykład rozwiązania implementacji asocjacji z atrybutem. 
 
-3. ADR<a name="_page14_x68.00_y405.92"></a> 3 – Dziedziczenie overlapping 
+#### 8.3. ADR<a name="_page14_x68.00_y405.92"></a> 3 – Dziedziczenie overlapping 
 
 |Kontekst |Z systemu mogą korzystać 3 rodzaje użytkowników, którzy mogą mieć funkcjonalności drugiego z 3 rodzajów użytkowników, mowa tu o organizatorze, lekarzu i fanie. Tradycyjne języki programowania nie umożliwiają tego typu dziedziczenia. Rys. 7.3 |
 | - | :- |
@@ -164,15 +169,15 @@ Rys. 7.2 Fragment z projektowego diagramu klas – przykład rozwiązania implem
 |Kontrargumenty przeciw wybranemu rozwiązaniu |Mimo implementacji funkcji innych typów użytkowników, mogą one nigdy nie zostać wykorzystane. Wraz z rozwojem systemu i rozbudowaniem o innych typów użytkowników, możliwe trudności w dziedziczeniu od klasy WorkerFan. |
 |Decyzja zatwierdzona przez |Daniłowski Cezary |
 
-![](Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.017.jpeg)
+![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.017.jpeg)
 
 Rys. 7.3 Fragment z analitycznego diagramu klas – dziedziczenie overlapping. 
 
-![](Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.018.png)
+![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.018.png)
 
 Rys. 7.4 Fragment z projektowego diagramu klas – implementacja dziedziczenia overlapping. 
 
-4. ADR<a name="_page16_x68.00_y70.92"></a> 4 – Dziedziczenie wieloaspektowe 
+#### 8.4. ADR<a name="_page16_x68.00_y70.92"></a> 4 – Dziedziczenie wieloaspektowe 
 
 |Kontekst |W systemie modelujemy różne typy wydarzeń, dzielone są ze względu na 2 cechy: typ (Show, Tournament) i odbiór (Public, Private) = Rys. 7.5. Dziedziczą one od klasy abstrakcyjnej. Diedziczenie wieloaspektowe nie jest możliwe w popularnych językach programowaia. Z tego też powodu należało je zaimplementować. |
 | - | :- |
@@ -182,15 +187,15 @@ Rys. 7.4 Fragment z projektowego diagramu klas – implementacja dziedziczenia o
 |Kontrargumenty przeciw wybranemu rozwiązaniu |Nieco „ukrycie” jednego z aspektów, spowodowane spłaszczeniem do klasy nadrzędnej. Atrybuty jednej z klas spłaszczonego aspektu mogą być nieużywane |
 |Decyzja zatwierdzona przez |Daniłowski Cezary |
 
-![](Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.019.png)
+![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.019.png)
 
 Rys. 7.5 Fragment z analitycznego diagramu klas – dziedziczenie wieloaspektowe. 
 
-![](Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.020.jpeg)
+![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.020.jpeg)
 
 Rys. 7.6 Fragment z projektowego diagramu klas – implementacja dziedziczenia wieloaspektowego. 
 
-5. ADR<a name="_page17_x68.00_y111.92"></a> 5 – Atrybut powtarzalny 
+#### 8.5. ADR<a name="_page17_x68.00_y111.92"></a> 5 – Atrybut powtarzalny 
 
 |Kontekst |W projekcie pojawia się atrybut powtarzalny, imię i nr telefonu. Potrzebne było rozwiązanie problemu przetrzymywania wartości tych atrybutów niezależnie od ilości ich powtórzeń. |
 | - | :- |
@@ -200,15 +205,15 @@ Rys. 7.6 Fragment z projektowego diagramu klas – implementacja dziedziczenia w
 |Kontrargumenty przeciw wybranemu rozwiązaniu |Dodatkowa tabela, skomplikowanie zapytań |
 |Decyzja zatwierdzona przez |Daniłowski Cezary |
 
-![](Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.021.jpeg)
+![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.021.jpeg)
 
 Rys. 7.7 Fragment z analitycznego diagramu klas – przykład atrybutu powtarzalnego, tutaj „name” 
 
-![](Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.022.jpeg)
+![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.022.jpeg)
 
 Rys. 7.8 Fragment z projektowego diagramu klas – implementacja atrybutu powtarzalnego. 
 
-6. ADR<a name="_page17_x68.00_y673.92"></a> 6 – Mapowanie atrybutów złożonych w modelu relacyjnym 
+#### 8.6. ADR<a name="_page17_x68.00_y673.92"></a> 6 – Mapowanie atrybutów złożonych w modelu relacyjnym 
 
 |Kontekst |W systemie klasy zawierają w sobie atrybuty złożone, które musiały zostać zmapowane na model relacyjny w bazie danych za pomocą ORM. |
 | - | :- |
@@ -223,7 +228,7 @@ Rys. 7.8 Fragment z projektowego diagramu klas – implementacja atrybutu powtar
 |Kontrargumenty przeciw wybranemu rozwiązaniu |Zwiększenie liczby kolumn, oraz możliwa redundancja |
 |Decyzja zatwierdzona przez |Daniłowski Cezary |
 
-7. ADR<a name="_page18_x68.00_y250.92"></a> 7 – Mapowanie dziedziczenia w modelu relacyjnym 
+#### 8.7. ADR<a name="_page18_x68.00_y250.92"></a> 7 – Mapowanie dziedziczenia w modelu relacyjnym 
 
 |Kontekst |Z racji występowania dziedziczenia w systemie, należało w jakiś sposób zmapować je by móc je przetrzymywać w bazie danych w czytelny sposób. |
 | - | :- |
@@ -233,7 +238,7 @@ Rys. 7.8 Fragment z projektowego diagramu klas – implementacja atrybutu powtar
 |Kontrargumenty przeciw wybranemu rozwiązaniu |Zwiększenie ilości tabel i pokomplikowanie zapytań |
 |Decyzja zatwierdzona przez |Daniłowski Cezary |
 
-8. ADR<a name="_page18_x68.00_y462.92"></a> 8 – Wykorzystane technologie 
+#### 8.8 ADR<a name="_page18_x68.00_y462.92"></a> 8 – Wykorzystane technologie 
 
 |Kontekst |Do implementacji tego projektu należało wybrać odpowiednie technologie. |
 | - | :- |
@@ -243,16 +248,12 @@ Rys. 7.8 Fragment z projektowego diagramu klas – implementacja atrybutu powtar
 |Kontrargumenty przeciw wybranemu rozwiązaniu |Problemy z debugowaniem w WebAssembly, |
 |Decyzja zatwierdzona przez |Daniłowski Cezary |
 
-9. Inne<a name="_page18_x68.00_y647.92"></a> pomniejsze decyzje 
+#### 8.9. Inne<a name="_page18_x68.00_y647.92"></a> pomniejsze decyzje 
 1. Postanowiono nie przedstawiać na diagramach metod typu set i get ze względu na to, iż zajmowało by to dużą ilość miejsca. 
-1. W implementacji niektóre złożone metody dotyczące logiki biznesowej zostały ulokowane w oddzielnych klasach - kontrolerach. 
-1. Atrybuty opcjonalne w implementacji nie zostały oznaczone adnotacjami @Required w przeciwieństwie do atrybutów wymaganych. 
+2. W implementacji niektóre złożone metody dotyczące logiki biznesowej zostały ulokowane w oddzielnych klasach - kontrolerach. 
+3. Atrybuty opcjonalne w implementacji nie zostały oznaczone adnotacjami @Required w przeciwieństwie do atrybutów wymaganych. 
 4. Atrybuty pochodne zostały zaimplementowane w postaci właściwości do odczytu (getter), oznaczono je adnotacją @NotMapped w celu wykluczenia jej z mapowania przez ORM. 
-4. Do zmapowania asocjacji wiele-do-wielu wykorzystano tabelę asocjacyjną, podobnie w rodzaju asocjacji z atrybutem. 
-4. W kompozycji w części oznaczono klucz obcy do całości adnotacją @Required i uniemożliwiono zmienianie jego wartość ustawiając w kontekście bazy danych przy budowniczym modelu użyto metody ValueGeneratedNever(), która informuje bazę danych o tym, że wartość klucza obcego nie powinna być zmieniania po przypisaniu. Ustawiono także adnotację [Editable(false)] co sprawia, że pole nie jest możliwe do edycji w widokach. 
-4. Na diagramie przedstawiono pewne ograniczenia względem atrybutów i relacji. Ograniczenie XOR dla relacji między klasą Fighter, a TrainingBootcamp, gdyż Fighter może brać udział w szkoleniu na dwa sposoby, może być mistrzem, albo uczniem. Logika tego i innych ograniczeń zostały umieszczona w specjalnych customowych adnotacjach. 
-4. W celu zachowania unikalności niektórych atrybutów użyto metody w FluentAPI: .HasIndex(e => e.Value).IsUnique(); 
-20 
-
-[ref1]: Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.002.png
-[ref2]: Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.005.png
+5. Do zmapowania asocjacji wiele-do-wielu wykorzystano tabelę asocjacyjną, podobnie w rodzaju asocjacji z atrybutem. 
+6. W kompozycji w części oznaczono klucz obcy do całości adnotacją @Required i uniemożliwiono zmienianie jego wartość ustawiając w kontekście bazy danych przy budowniczym modelu użyto metody ValueGeneratedNever(), która informuje bazę danych o tym, że wartość klucza obcego nie powinna być zmieniania po przypisaniu. Ustawiono także adnotację [Editable(false)] co sprawia, że pole nie jest możliwe do edycji w widokach. 
+7. Na diagramie przedstawiono pewne ograniczenia względem atrybutów i relacji. Ograniczenie XOR dla relacji między klasą Fighter, a TrainingBootcamp, gdyż Fighter może brać udział w szkoleniu na dwa sposoby, może być mistrzem, albo uczniem. Logika tego i innych ograniczeń zostały umieszczona w specjalnych customowych adnotacjach. 
+8. W celu zachowania unikalności niektórych atrybutów użyto metody w FluentAPI: .HasIndex(e => e.Value).IsUnique();
