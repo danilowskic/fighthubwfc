@@ -11,26 +11,26 @@
 1. [Kontekst i wymagania użytkownika ........................................................................................................ 3](#_page2_x68.00_y91.92)
 2. [Diagram przypadków użycia ................................................................................................................... 5](#_page4_x104.00_y93.92)
 3. [Diagram klas ............................................................................................................................................ 6](#_page5_x68.00_y70.92)
-    3.1. [Analityczny ......................................................................................................................................... 6](#_page5_x68.00_y116.92)
-    3.2. [Projektowy ......................................................................................................................................... 7](#_page6_x68.00_y70.92)
+3.1. [Analityczny ......................................................................................................................................... 6](#_page5_x68.00_y116.92)
+3.2. [Projektowy ......................................................................................................................................... 7](#_page6_x68.00_y70.92)
 4. [Scenariusz przypadku użycia „Wystawienie opinii lekarskiej” ................................................................ 8](#_page7_x68.00_y70.92)
-    4.1. [Opis tekstowy ................................................................................................................................. 8](#_page7_x68.00_y138.92)
-    4.2. [Diagram aktywności ....................................................................................................................... 9](#_page8_x68.00_y70.92)
+4.1. [Opis tekstowy ................................................................................................................................. 8](#_page7_x68.00_y138.92)
+4.2. [Diagram aktywności ....................................................................................................................... 9](#_page8_x68.00_y70.92)
 5. [Diagram stanu dla klasy „FighterInvolvement” .................................................................................... 10](#_page9_x68.00_y70.92)
 6. [Skutki analizy dynamicznej ................................................................................................................... 11](#_page10_x68.00_y70.92)
-    6.1. [Metody ............................................................................................................................................ 11](#_page10_x68.00_y150.92)
-    6.2. [Atrybuty ........................................................................................................................................... 11](#_page10_x68.00_y386.92)
+6.1. [Metody ............................................................................................................................................ 11](#_page10_x68.00_y150.92)
+6.2. [Atrybuty ........................................................................................................................................... 11](#_page10_x68.00_y386.92)
 7. [Projekt graficznego interfejsu użytkownika .......................................................................................... 12](#_page11_x68.00_y91.92)
 8. [Decyzje projektowe............................................................................................................................... 14](#_page13_x68.00_y70.92)
-    8.1. [ADR 1 – Ekstensja i jej trwałość ........................................................................................................... 14](#_page13_x68.00_y116.92)
-    8.2. [ADR 2 – Asocjacja z atrybutem ............................................................................................................ 14](#_page13_x68.00_y301.92)
-    8.3. [ADR 3 – Dziedziczenie overlapping ..................................................................................................... 15](#_page14_x68.00_y405.92)
-    8.4. [ADR 4 – Dziedziczenie wieloaspektowe .............................................................................................. 17](#_page16_x68.00_y70.92)
-    8.5. [ADR 5 – Atrybut powtarzalny .............................................................................................................. 18](#_page17_x68.00_y111.92)
-    8.6. [ADR 6 – Mapowanie atrybutów złożonych w modelu relacyjnym ...................................................... 18](#_page17_x68.00_y673.92)
-    8.7. [ADR 7 – Mapowanie dziedziczenia w modelu relacyjnym .................................................................. 19](#_page18_x68.00_y250.92)
-    8.8. [ADR 8 – Wykorzystane technologie .................................................................................................... 19](#_page18_x68.00_y462.92)
-    8.9. [Inne pomniejsze decyzje ..................................................................................................................... 19](#_page18_x68.00_y647.92)
+8.1. [ADR 1 – Ekstensja i jej trwałość ........................................................................................................... 14](#_page13_x68.00_y116.92)
+8.2. [ADR 2 – Asocjacja z atrybutem ............................................................................................................ 14](#_page13_x68.00_y301.92)
+8.3. [ADR 3 – Dziedziczenie overlapping ..................................................................................................... 15](#_page14_x68.00_y405.92)
+8.4. [ADR 4 – Dziedziczenie wieloaspektowe .............................................................................................. 17](#_page16_x68.00_y70.92)
+8.5. [ADR 5 – Atrybut powtarzalny .............................................................................................................. 18](#_page17_x68.00_y111.92)
+8.6. [ADR 6 – Mapowanie atrybutów złożonych w modelu relacyjnym ...................................................... 18](#_page17_x68.00_y673.92)
+8.7. [ADR 7 – Mapowanie dziedziczenia w modelu relacyjnym .................................................................. 19](#_page18_x68.00_y250.92)
+8.8. [ADR 8 – Wykorzystane technologie .................................................................................................... 19](#_page18_x68.00_y462.92)
+8.9. [Inne pomniejsze decyzje ..................................................................................................................... 19](#_page18_x68.00_y647.92)
 
 
    
@@ -56,6 +56,8 @@ Poza zapisem na wydarzenie zawodnicy mogą też wziąć udział w bootcampie szk
 
 System, ma też umożliwiać comiesięczne generowanie podsumowania finansowego WFC. 
 
+
+
 ### 2. Diagram<a name="_page4_x104.00_y93.92"></a> przypadków użycia ![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.003.png)
 ### 3. Diagram<a name="_page5_x68.00_y70.92"></a> klas
 #### 3.1. Analityczny<a name="_page5_x68.00_y116.92"></a> ![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.006.png)
@@ -77,7 +79,13 @@ System, ma też umożliwiać comiesięczne generowanie podsumowania finansowego 
 
 ![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.009.png)
 
+
+
+
 ### 5. Diagram<a name="_page9_x68.00_y70.92"></a> stanu dla klasy „FighterInvolvement” ![ref2]![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.010.png)
+
+
+
 ### 6. Skutki<a name="_page10_x68.00_y70.92"></a> analizy dynamicznej ![ref2]
 
 W ramach procesu analizy dynamicznej nakreślono metody i atrybuty potrzebne do przeprowadzenia zaproponowanego przypadku użycia. 
@@ -109,7 +117,6 @@ Metoda wywoływana przez metodę CreateMedicalCertificate. Aktualizuje status ko
 
 
 ### 7. Projekt<a name="_page11_x68.00_y91.92"></a> graficznego interfejsu użytkownika
-
 
 ![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.011.jpeg)
 
@@ -217,11 +224,7 @@ Rys. 7.8 Fragment z projektowego diagramu klas – implementacja atrybutu powtar
 
 |Kontekst |W systemie klasy zawierają w sobie atrybuty złożone, które musiały zostać zmapowane na model relacyjny w bazie danych za pomocą ORM. |
 | - | :- |
-|Decyzja |Postanowiono na spłaszczenie tych atrybutów. Pola znajdujące się w atrybucie złożonym będą bezpośrednio stanowiły kolumny w tabeli |
-
-
-
-||reprezentującej klasę, w której ów atrybuty się znajdują. Zostało to zrealizowane za pomocą ORM Entity Framework  |
+|Decyzja |Postanowiono na spłaszczenie tych atrybutów. Pola znajdujące się w atrybucie złożonym będą bezpośrednio stanowiły kolumny w tabeli reprezentującej klasę, w której ów atrybuty się znajdują. Zostało to zrealizowane za pomocą ORM Entity Framework  |
 | :- | :- |
 |Odrzucone alternatywy  |Wydzielenie atrybutu złożonego do oddzielnej tabeli i połączenie jej relacją (kluczem obcym) z klasą posiadającą ten atrybut. |
 |Argumenty za wybranym rozwiązaniem |Prostsza struktura bazy danych, łatwiejsze zapytania |
