@@ -1,7 +1,8 @@
 # FightHub WFC 
 ## System zarządzania walkami i szkoleniami organizowanymi przez World Federation of Combat (WFC) 
 
-*Daniłowski Cezary, s25901 16 czerwca 2024, Warszawa* 
+*Daniłowski Cezary, s25901 16 czerwca 2024, Warszawa*
+
 *Polsko-Japońska Akademia Technik Komputerowych Modelowanie i Analiza Systemów Informacyjnych* 
 
 
@@ -82,11 +83,11 @@ System, ma też umożliwiać comiesięczne generowanie podsumowania finansowego 
 
 
 
-### 5. Diagram<a name="_page9_x68.00_y70.92"></a> stanu dla klasy „FighterInvolvement” ![ref2]![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.010.png)
+### 5. Diagram<a name="_page9_x68.00_y70.92"></a> stanu dla klasy „FighterInvolvement” ![](readme-images/Aspose.Words.78fd4383-dc01-446f-9cda-a638e677456d.010.png)
 
 
 
-### 6. Skutki<a name="_page10_x68.00_y70.92"></a> analizy dynamicznej ![ref2]
+### 6. Skutki<a name="_page10_x68.00_y70.92"></a> analizy dynamicznej
 
 W ramach procesu analizy dynamicznej nakreślono metody i atrybuty potrzebne do przeprowadzenia zaproponowanego przypadku użycia. 
 
@@ -136,7 +137,7 @@ Rys. 7.4 Interfejs lekarza – wyświetlenie pojedynczej opinii lekarskiej.
 
 
 
-### 8. Decyzje<a name="_page13_x68.00_y70.92"></a> projektowe ![ref2]
+### 8. Decyzje<a name="_page13_x68.00_y70.92"></a> projektowe
 
 #### 8.1. ADR<a name="_page13_x68.00_y116.92"></a> 1 – Ekstensja i jej trwałość 
 
